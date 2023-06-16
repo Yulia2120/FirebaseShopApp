@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "883082567130",
+    "project_id": "fir-shopapp-f0b39",
+    "storage_bucket": "fir-shopapp-f0b39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883082567130:android:05080aea80028056ab34e3",
+        "android_client_info": {
+          "package_name": "com.obushko.firebaseshopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883082567130-a25ouq2k1l4r3uduqr5bfn5374506mrr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAnrSWQ3T4r3MUEoqx34DiI9MzhgUGN7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "883082567130-a25ouq2k1l4r3uduqr5bfn5374506mrr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

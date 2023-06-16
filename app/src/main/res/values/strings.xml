@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FirebaseShopApp</string>
+    <string name="login">login</string>
+    <string name="registration">registration</string>
+    <string name="welcome_to_intertop">Welcome to \n Intertop</string>
+    <string name="enter_your_phone">Enter Your Phone</string>
+    <string name="enter_your_password">Enter Your Password</string>
+    <string name="don_t_remember_password_recovery_it">Don\'t remember Password? Recovery it</string>
+</resources>
