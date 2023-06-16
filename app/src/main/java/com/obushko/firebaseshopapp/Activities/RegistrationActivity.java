@@ -1,4 +1,4 @@
-package com.obushko.firebaseshopapp;
+package com.obushko.firebaseshopapp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.obushko.firebaseshopapp.R;
 
 import java.util.HashMap;
 
