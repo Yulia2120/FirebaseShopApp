@@ -1,4 +1,4 @@
-package com.obushko.firebaseshopapp.Activities;
+package com.obushko.firebaseshopapp.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,15 @@ import com.obushko.firebaseshopapp.R;
 
 public class AdminActivity extends AppCompatActivity {
 
+    private String categoryName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        Toast.makeText(this, "Admin panel", Toast.LENGTH_SHORT).show();
+        categoryName = getIntent().getExtras().get("brands").toString();
+
+        Toast.makeText(this, "Brands " +categoryName, Toast.LENGTH_SHORT).show();
     }
 }

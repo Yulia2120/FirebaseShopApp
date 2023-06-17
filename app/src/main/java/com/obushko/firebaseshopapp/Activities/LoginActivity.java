@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.obushko.firebaseshopapp.Admin.AdminActivity;
+import com.obushko.firebaseshopapp.Admin.CategoryActivity;
 import com.obushko.firebaseshopapp.Model.Users;
 import com.obushko.firebaseshopapp.Prevalent.Prevalent;
 import com.obushko.firebaseshopapp.R;
@@ -105,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                      if (parentDbName.equals("Admins")) {
                                         Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-                                        Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
+                                        Intent adminIntent = new Intent(LoginActivity.this, CategoryActivity.class);
                                         startActivity(adminIntent);
                                     }
                                 } else {
