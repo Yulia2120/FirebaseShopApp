@@ -2,13 +2,13 @@ package com.obushko.firebaseshopapp.Model;
 
 public class Users {
   private String userName;
-  private String phone;
   private String password;
+  private String phone;
 
   public Users() {
   }
 
-  public Users(String userName, String phone, String password) {
+  public Users(String userName, String password, String phone) {
     this.userName = userName;
     this.phone = phone;
     this.password = password;

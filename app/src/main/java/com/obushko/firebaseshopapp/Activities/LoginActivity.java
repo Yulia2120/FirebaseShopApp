@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextPhone, editTextPassword;
    private String parentDbName = "Users";
    private CheckBox checkBox;
+   private TextView textViewAdmin, textViewClient;
 
 
     @Override
@@ -38,10 +40,25 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         editTextPhone = findViewById(R.id.editTextPhone);
         editTextPassword = findViewById(R.id.editTextPassword);
+        textViewAdmin = findViewById(R.id.textViewAdmin);
+        textViewClient = findViewById(R.id.textViewClient);
         checkBox = findViewById(R.id.checkboxLogin);
         Paper.init(this);
 
         loginBtn.setOnClickListener(v -> loginUser());
+
+        textViewAdmin.setOnClickListener(v -> {
+            textViewAdmin.setVisibility(View.INVISIBLE);
+            textViewClient.setVisibility(View.VISIBLE);
+            loginBtn.setText("Login to Admin");
+            parentDbName="Admins";
+        });
+        textViewClient.setOnClickListener(v->{
+            textViewAdmin.setVisibility(View.VISIBLE);
+            textViewClient.setVisibility(View.INVISIBLE);
+            loginBtn.setText("Login");
+            parentDbName="Users";
+        });
 
     }
 
@@ -73,25 +90,35 @@ public class LoginActivity extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child(parentDbName).child(phone).exists()){
+                if (snapshot.child(parentDbName).child(phone).exists()) {
 
                     Users usersData = snapshot.child(parentDbName).child(phone).getValue(Users.class);
-                    if(usersData.getPhone().equals(phone)){
-                        if(usersData.getPassword().equals(password)){
-                            Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-                            Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(homeIntent);
-                        }else {
-                            Toast.makeText(LoginActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
-                        }
-                    }
 
-                }else {
-                    Toast.makeText(LoginActivity.this, "Account "+phone+" is already registered", Toast.LENGTH_SHORT).show();
-                    Intent registerIntent = new Intent(LoginActivity.this, RegistrationActivity.class);
-                    startActivity(registerIntent);
+                                 assert usersData != null;
+                                if (usersData.getPhone().equals(phone)) {
+                                if (usersData.getPassword().equals(password)) {
+
+                                    if (parentDbName.equals("Users")) {
+                                        Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                                        Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                                        startActivity(homeIntent);
+                                    }
+                                     if (parentDbName.equals("Admins")) {
+                                        Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                                        Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
+                                        startActivity(adminIntent);
+                                    }
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Account " + phone + " is already registered", Toast.LENGTH_SHORT).show();
+                        Intent registerIntent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                        startActivity(registerIntent);
+                    }
                 }
-            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
